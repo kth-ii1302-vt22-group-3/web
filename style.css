@@ -1,0 +1,372 @@
+* {
+    font-family: Verdana;
+}
+
+img{
+    margin: 3px
+}
+
+.avatarImg{
+    margin: 0px;
+}
+
+.header{
+    flex-direction: column;
+    flex: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.blueBackground{
+    background-color: #3E71D5;
+    align-content: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    float: right;
+    padding-right: 30px;
+}
+
+.questionNumber{
+    text-align: center;
+    font-style: italic;
+    color: grey;
+    padding: 5px;
+}
+
+.quizViewPic{
+    width: 400px;
+    margin: 5px
+}
+
+.left{
+    text-align: left;
+}
+
+.logoIcon{
+    width: 40px;
+}
+
+.homeIcon{
+    width: 35px;
+}
+
+.profileIcon{
+    width: 45px;
+}
+
+.username{
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.logoIconHomePage{
+    width: 250px;
+    margin-bottom: 40px;
+}
+
+.startMenu{
+    text-align: center;
+}
+
+.logSignBox{
+    size: 30px;
+    width: 350px;
+    font-size: 12px ;
+    display:inline-block;
+    text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.loginBox{
+    display: inline-block;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.inputBox{
+    border-radius: 4px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.lastInputBox{
+    border-radius: 4px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.noBorderBox{
+    display: inline-block;
+    text-align: center;
+    width: 250px;
+    margin: 20px;
+}
+
+.link{
+    text-decoration: underline;
+    font-size: 12px;
+    color: green;
+    margin-bottom: 0px;
+}
+
+button{
+    /* button style: */
+    width: 250px;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    margin-bottom: 30px;
+
+    /* text style: */
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 1px black;
+
+    /* mouseOve*/
+}
+
+.headerButton{
+    /* button style: */
+    width: auto;
+    height: auto;
+    border-radius: 0px;
+    border: none;
+    padding: 0px;
+    box-shadow: none;
+    margin-bottom: 0px;
+
+    font-size: medium;
+    color: black;
+    background-color: transparent;
+    text-shadow: none;
+}
+
+.currentScore{
+    font-size:570%;
+    color: green;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.errorBox{
+    display: inline-block;
+    text-align: center;
+    border-radius: 8px;
+    margin: 0px; 
+}
+
+.headerHover:hover:enabled{
+    cursor:pointer;
+}
+
+.greenHover:hover:enabled{
+    background: green; 
+    cursor:pointer; 
+}
+
+.orangeHover:hover:enabled{
+    background: orange; 
+    cursor:pointer; 
+}
+
+button:disabled{
+    background-color: grey; 
+}
+
+.smallButton{
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.highbutton{
+    height: auto;
+}
+
+.plusMinusButton{
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    color: black;
+    text-shadow: none;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.longButton{
+    width: 200px;
+}
+
+.quizButton{
+    height: auto;
+    width: 160px; 
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.hideDisabled:disabled{
+    display: none; 
+
+}
+
+select{
+    margin: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    margin-bottom: 30px;
+}
+
+.avatarSelect{
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.error{
+    color: red;
+    width: 250px; 
+    height: 60px;
+    margin: 0px;
+    border: none;
+    text-align: center; 
+} 
+
+.mainContent{
+    padding: 90px 10px;
+    flex-direction: row;
+    flex: 1; /* gets 100% of the window growth */
+    margin: 4px;
+}
+
+.searchResults{
+    text-align:center;
+    display:inline-block;
+    width:200px;
+    vertical-align:top;
+}
+
+.homePageTableColName{
+    border: 1px solid black;
+    font-weight: bold;
+    background-color: #D3D3D3;
+}
+
+.homePageTable{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.profileSettingsBox{
+    flex: 0;
+    size: 30px;
+    width: 350px;
+    height: 680px;
+    font-size: 12px ;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.profilePictureView{
+    flex: 1;
+    float: left;
+}
+
+.mainTitle{
+    font-size:200%;
+    font-weight: bold;
+}
+
+.debug{
+    border-style: solid;
+}
+
+.flexParent{
+    flex-direction: column;
+    padding-bottom: 2px;
+}
+
+.sidebar{
+    flex: 0; /* gets 0% of the window growth */
+    background-color: #8FBC8F; /* green-ish colour on the sidebar */
+    margin: 2px;
+    width: 300px;
+    height: 600px;
+}
+
+.quizView{
+    padding-right: 20%;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 520px){ /* apply below if window width is less than max-width: */
+    .flexParent{
+        flex-direction: column;
+        padding-bottom: 2px;
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+.highscore{
+    float: right;
+    width: 20%;
+    height: 100%;
+    flex: 0; /* gets 0% of the window growth */
+    margin-left: 50px;
+    margin-right: 0px;
+    border-style: none;
+    color: black;
+    background-color: #b1cefc;
+    text-decoration: none;
+    margin-top: 54px;
+    padding: 10px;
+    padding-top: 22px;
+    right: 0;
+    position: fixed;
+}
+
