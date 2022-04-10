@@ -15,7 +15,7 @@ const App= (props)=>(
 
 /* set the default user view to the home view, eg when app starts*/
 function defaultRoute(){
-     if(!["#home", "#settings", "#signup", "#login", "#profile", "#forgotPassword"]
+     if(!["#home"]
      .find((knownRoute)=> window.location.hash === knownRoute)
      ) window.location.hash="#home";
  }

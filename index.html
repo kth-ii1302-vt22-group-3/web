@@ -5,8 +5,15 @@
     <!---__________Other stuff_____________--->
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    
+    <!---__________Production_____________--->
+    <!---<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>--->
+
+    <!---__________Development_____________--->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
 
     <!---__________views__________--->
 
@@ -20,7 +27,7 @@
 
     <!---__________model_____________--->
     <script src="model/app.js" type="text/jsx"></script>
-    <script src="js/model.js" type="text/jsx"></script>
+    <script src="model/model.js" type="text/jsx"></script>
   
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -40,7 +47,7 @@
 
 <script type="text/babel">
 
-    const myModel = new QuizModel();
+    const myModel = new Model();
     persistModel(myModel);
     ReactDOM.render(<App model={myModel} />, document.getElementById("app"));
 
