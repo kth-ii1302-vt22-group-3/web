@@ -1,7 +1,7 @@
 /**
  * Model saves all data associated with the app. Eg username, score, questions.
  */
-class Model {
+class Model{
 
     constructor(){
 

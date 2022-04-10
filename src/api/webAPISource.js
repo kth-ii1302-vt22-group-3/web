@@ -3,7 +3,8 @@ const Source={   // JS object creation literal
     apiCall(params) {
         return fetch(BASE_URL+params, {
             "method": "GET",              // HTTP method
-            "headers": {                  // HTTP headers
+            "headers": { 
+                "contentType": "application/json"                 // HTTP headers
             }
         })
             .then(response=> response.status === 200 ? response :
@@ -12,7 +13,7 @@ const Source={   // JS object creation literal
     }
     ,
     searchPicture(params) {
-        return Source.apiCall("" + new URLSearchParams(params)).then(data=> data.results);
+        return Source.apiCall("" + new URLSearchParams(params)).then(data=> console.log(data), data.results );
     }
 };
 
