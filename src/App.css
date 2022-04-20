@@ -1,3 +1,48 @@
+
+/* CSS styles */
+p {
+  margin:0;
+  padding:0;
+}
+
+.HomePage {
+  text-align: center; 
+  align-items: center;
+  background-color: #e6ffe6;
+  color: #4c525c; 
+  min-height: 100vh;
+  font-family: Courier New; 
+  font-weight: bold; 
+  padding: 10px; 
+  border: 10px; 
+}
+
+.Centered {
+  position: fixed; 
+  top: calc(50% - 20px);
+  left: calc(50% - 50px);
+}
+
+.Header {
+  font-size: 22px; 
+}
+
+.TimeStamp {
+  font-size: 12px; 
+}
+
+.Temperature {
+  font-size: 150px; 
+}
+
+
+
+
+
+
+
+
+
 .App {
   text-align: center;
 }
