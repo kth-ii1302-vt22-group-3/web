@@ -18,12 +18,6 @@ function HomePagePresenter(props){
     
     )
 
-    //setTemper = props.model.setTemperature(12);
-    /*
-    function setTemper(value){
-        props.model.s
-    }
-    */
     return(
         <>
             <TemperatureView 
