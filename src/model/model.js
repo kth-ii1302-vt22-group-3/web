@@ -1,3 +1,4 @@
+import ApiCall from "../api/apiCall"; 
 class Model{
 
     constructor(){
@@ -6,7 +7,8 @@ class Model{
 
         //HomePageView
         this.temperature = 25;
-        this.timeStamp = "1970-01-01";  
+        this.timeStamp = "1970-01-01";
+        
     }
 
     //____________observers_________________
@@ -30,6 +32,20 @@ class Model{
     setTimeStamp(timeStamp){
         this.timeStamp = timeStamp;
     }
+
+    setLatest(result){
+        console.log(result);
+        this.setTemperature(result["value"]);
+        this.setTimeStamp(result["timestamp"]);
+        this.notifyObservers();
+    }
+
+    getLatest(){
+        ApiCall.getTemperature({
+            params: "/temperature/current"
+        }).then(e => this.setLatest(e))
+    }
+
 }
 
 export default Model
