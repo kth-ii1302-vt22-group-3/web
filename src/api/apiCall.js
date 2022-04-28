@@ -6,6 +6,10 @@ const ApiCall = {
         return fetch(TEMPER_URL , {
             "method": "GET",              // HTTP method
             "headers": {                  // HTTP headers
+                "Content-Type": "application/json",
+                //"Access-Control-Allow-Origin": "*",
+                //"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+
             }
         })
             .then(response=> response.status === 200 ? response :
@@ -14,7 +18,7 @@ const ApiCall = {
     }
     ,
     getTemperature(params){
-        return ApiCall.apiCall("" + new URLSearchParams(params))
+        return ApiCall.apiCall("" + new URLSearchParams(params)).then(data => data)
     }
 };
 

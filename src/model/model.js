@@ -34,15 +34,15 @@ class Model{
     }
 
     setLatest(result){
-        console.log(result);
-        this.setTemperature(result["value"]);
-        this.setTimeStamp(result["timestamp"]);
+        this.temperature = result.value;
+        this.timeStamp = result.timestamp;
         this.notifyObservers();
     }
 
     getLatest(){
         ApiCall.getTemperature({
-            params: "/temperature/current"
+            value: this.temperature,
+            timestamp: this.timeStamp 
         }).then(e => this.setLatest(e))
     }
 
