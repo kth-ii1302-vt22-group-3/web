@@ -4,8 +4,8 @@ function TemperatureView(props) {
         <div className="HomePage">
             <div className="Centered">
                 <p className="Header">The current temperature is: </p>
-                <p className="TimeStamp">Last updated: {props.timeStamp}</p>
-                <p className="Temperature">{props.temperature}°c</p>
+                <p id='timestamp' className="TimeStamp">Last updated: {props.timeStamp}</p>
+                <p id='temperature' className="Temperature">{props.temperature}°c</p>
             </div>
         </div>
     );
