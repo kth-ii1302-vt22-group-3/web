@@ -1,4 +1,6 @@
- class Model{
+import ApiCall from "../api/apiCall";
+
+class Model{
 
     constructor(){
         //observers
