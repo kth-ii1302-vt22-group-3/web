@@ -7,6 +7,7 @@ const ApiCall = {
   apiCall(params) {
     return fetch(TEMPER_URL, {
       method: "GET", // HTTP method
+      crossDomain: true,
       headers: {
         // HTTP headers
         "Content-Type": "application/json",
