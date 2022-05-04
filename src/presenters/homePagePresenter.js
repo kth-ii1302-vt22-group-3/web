@@ -13,7 +13,7 @@ function HomePagePresenter(props) {
         setDateTime(props.model.timestamp);
       });
     },
-    [props.model.temperature, props.model.timestamp]
+    [props.model]
   );
 
   return (
