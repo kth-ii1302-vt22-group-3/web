@@ -65,7 +65,7 @@ jobs:
       - name: 'UI Tests - Chrome'
         uses: cypress-io/github-action@v2
         with:
-          install: false
+          install: npm ci
           build: npm run-script build
           start: npm run-script start ci
           wait-on: 'http://localhost:3000'
