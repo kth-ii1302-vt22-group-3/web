@@ -63,16 +63,5 @@ jobs:
           path: build
           
       - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v2
-        with:
-          install: npm ci
-          build: npm run-script build
-          start: npm run-script start ci
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          browser: chrome
-          group: 'UI - Chrome'
-          spec: cypress/integration/*_spec.js
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm start & npx cypress run
