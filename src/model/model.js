@@ -5,9 +5,9 @@
         this.observers = [];
 
         //HomePageView
-        this.temperature = 25;
-        this.timestamp = "1970-01-01";
-        
+        this.temperature = 0;
+        this.timestamp = "1970-01-01 00:00:00";
+      
     }
 
     //____________observers_________________
