@@ -1,19 +1,26 @@
-import React from "react"
-import TemperatureView from "../views/temperatureView"
+import React from "react";
+import TemperatureView from "../views/temperatureView";
 
-function HomePagePresenter(props){
-    const [temper, setTemper] = React.useState(props.model.temperature)
-    const [dateTime, setDateTime] = React.useState(props.model.timestamp)
+function HomePagePresenter(props) {
+  const [temper, setTemper] = React.useState(props.model.temperature);
+  const [dateTime, setDateTime] = React.useState(props.model.timestamp);
+  
+  React.useEffect(
+    function () {
+      // add observer to model
+      props.model.addObserver(function () {
+        setTemper(props.model.temperature);
+        setDateTime(props.model.timestamp);
+      });
+    },
+    [props.model.temperature, props.model.timestamp]
+  );
 
-
-    return(
-        <>
-            <TemperatureView 
-                temperature = {temper}
-                timestamp = {dateTime}
-            />
-        </>
-    )
+  return (
+    <>
+      <TemperatureView temperature={temper} timestamp={dateTime} />
+    </>
+  );
 }
 
-export default HomePagePresenter
+export default HomePagePresenter;

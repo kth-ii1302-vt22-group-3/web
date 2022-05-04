@@ -38,6 +38,13 @@
         this.notifyObservers();
     }
 
+    getLatest(){
+        ApiCall.getTemperature({
+            value: this.temperature,
+            timestamp: this.timeStamp 
+        }).then(e => this.setLatest(e))
+    }
+
 }
 
 export default Model
