@@ -1,14 +1,13 @@
-import ApiCall from "../api/apiCall"; 
-class Model{
+ class Model{
 
     constructor(){
         //observers
         this.observers = [];
 
         //HomePageView
-        this.temperature = 0;
-        this.timeStamp = "1970-01-01 00:00:00";
-        
+        this.temperature = 25;
+        this.timestamp = "1970-01-01";
+      
     }
 
     //____________observers_________________
@@ -29,20 +28,20 @@ class Model{
         this.temperature = temperature;
     }
 
-    setTimeStamp(timeStamp){
-        this.timeStamp = timeStamp;
+    setTimestamp(timestamp){
+        this.timestamp = timestamp;
     }
 
     setLatest(result){
-        console.log(result);
         this.setTemperature(result["value"]);
-        this.setTimeStamp(result["timestamp"]);
+        this.setTimestamp(result["timestamp"]);
         this.notifyObservers();
     }
 
     getLatest(){
         ApiCall.getTemperature({
-            params: "/temperature/current"
+            value: this.temperature,
+            timestamp: this.timeStamp 
         }).then(e => this.setLatest(e))
     }
 
