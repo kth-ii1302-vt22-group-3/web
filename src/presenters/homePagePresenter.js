@@ -3,14 +3,14 @@ import TemperatureView from "../views/temperatureView"
 
 function HomePagePresenter(props){
     const [temper, setTemper] = React.useState(props.model.temperature)
-    const [dateTime, setDateTime] = React.useState(props.model.timeStamp)
+    const [dateTime, setDateTime] = React.useState(props.model.timestamp)
 
 
     return(
         <>
             <TemperatureView 
                 temperature = {temper}
-                timeStamp = {dateTime}
+                timestamp = {dateTime}
             />
         </>
     )
