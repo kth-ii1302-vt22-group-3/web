@@ -2,26 +2,23 @@ import React from "react";
 import TemperatureView from "../views/temperatureView";
 
 function HomePagePresenter(props) {
-  const [temper, setTemper] = React.useState(0);
-  const [dateTime, setDateTime] = React.useState("YYYYMMDDHHMMSS");
-
+  const [temper, setTemper] = React.useState(props.model.temperature);
+  const [dateTime, setDateTime] = React.useState(props.model.timestamp);
+  
   React.useEffect(
     function () {
       // add observer to model
       props.model.addObserver(function () {
         setTemper(props.model.temperature);
-        setDateTime(props.model.timeStamp);
+        setDateTime(props.model.timestamp);
       });
     },
-    [props.model.temperature, props.model.timeStamp]
+    [props.model.temperature, props.model.timestamp]
   );
 
   return (
     <>
-    {/* TODO Add loading */}
-      {temper !== 0 && (
-        <TemperatureView temperature={temper} timeStamp={dateTime} />
-      )}
+      <TemperatureView temperature={temper} timestamp={dateTime} />
     </>
   );
 }
