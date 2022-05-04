@@ -11,7 +11,7 @@ const ApiCall = {
       headers: {
         // HTTP headers
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://cloudometer-api.herokuapp.com",
+        "Access-Control-Allow-Origin": "https://cloudometer-web.herokuapp.com",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
       },
     })
