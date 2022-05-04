@@ -50,7 +50,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [ 1, 2, 3, 4, 5 ]
+        containers: [ 1, 2 ]
         
     steps:
       - name: Checkout
@@ -66,6 +66,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
+          build: npm run-script build
           start: npm run-script start ci
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
