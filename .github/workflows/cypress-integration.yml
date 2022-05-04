@@ -29,39 +29,7 @@ jobs:
         run: |
           npm ci
           npm run build --if-present
-      
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
           
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
-          build: npm run-script build
-    
-  ui-chrome-tests:
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
-    needs: install
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [ 1, 2 ]
-        
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Download the build folders
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: build
-          
-      - name: 'UI Tests - Chrome'
+      - name: start server and cypress
         run: |
           npm start & npx cypress run
