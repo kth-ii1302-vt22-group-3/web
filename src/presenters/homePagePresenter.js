@@ -22,7 +22,7 @@ function HomePagePresenter(props) {
   return (
     <>
       <TemperatureView temperature={temper} timestamp={dateTime} />
-      
+      <TemperatureGraphView data={chartData}/>
     </>
   );
 }

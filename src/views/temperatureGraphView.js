@@ -1,3 +1,4 @@
+import Chart from 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
 
 function TemperatureGraphView(props) {
@@ -9,7 +10,12 @@ function TemperatureGraphView(props) {
                 datasets:[{
                     label: 'Temperature',
                     data: props.data,
+                    borderColor: [
+                        'rgba(75, 192, 192, 0.6)'
+                    ],
+                    //fill: false,
                     borderWidth: 4,
+                    tension: 0.1
                 }]
             }}
             height={400}
