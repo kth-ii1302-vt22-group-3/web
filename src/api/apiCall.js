@@ -5,13 +5,12 @@ function doThrow(e) {
 }
 const ApiCall = {
   apiCall(params) {
-    return fetch(TEMPER_URL, {
+    return fetch(TEMPER_URL + params, {
       method: "GET", // HTTP method
       crossDomain: true,
       headers: {
         // HTTP headers
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://cloudometer-web.herokuapp.com",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
       },
     })
@@ -26,11 +25,17 @@ const ApiCall = {
       )
       .then((response) => response.json());
   },
-  getTemperature(params) {
-    return ApiCall.apiCall("" + new URLSearchParams(params)).then(
+  getTemperature() {
+    return ApiCall.apiCall("/current").then(
       (data) => data
     );
   },
+  getTemperatures() {
+    return ApiCall.apiCall("/")
+      .then((data) => {
+        return data;
+      });
+  }
 };
 
 export default ApiCall;
