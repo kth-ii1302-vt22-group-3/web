@@ -13,7 +13,7 @@ function HomePagePresenter(props) {
       props.model.addObserver(function () {
         setTemper(props.model.temperature);
         setDateTime(props.model.timestamp);
-        //setChartData(props.model.chartData);
+        setChartData(props.model.chartData);
       });
     },
     [props.model]
@@ -22,7 +22,7 @@ function HomePagePresenter(props) {
   return (
     <>
       <TemperatureView temperature={temper} timestamp={dateTime} />
-      <TemperatureGraphView labels={chartData.labels} dataset={chartData.dataset}/>
+      <TemperatureGraphView chartData={chartData} />
     </>
   );
 }
