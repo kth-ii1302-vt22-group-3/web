@@ -9,7 +9,7 @@ class Model{
         //HomePageView
         this.temperature = 0;
         this.timestamp = "1970-01-01 00:00:00";
-        this.chartData = [11, 12, 22, 13, 10 , 9, 11]
+        this.chartData = [15, 12, 22, 13, 10 , 9, 11]
       
     }
 
