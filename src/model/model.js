@@ -10,7 +10,8 @@ class Model{
         this.temperature = 0;
         this.temperatures = [];
         this.timestamp = "1970-01-01 00:00:00";
-      
+        this.chartData = {labels: ["29/4", "30/4", "1/5", "2/5", "3/5", "4/5", "5/5"] ,
+            dataset: [15, 12, 22, 13, 10 , 9, 11]} 
     }
 
     //____________observers_________________
@@ -33,6 +34,10 @@ class Model{
 
     setTimestamp(timestamp){
         this.timestamp = timestamp;
+    }
+
+    setChartData(chartData){
+        this.chartData = chartData;
     }
 
     setLatest(result){
