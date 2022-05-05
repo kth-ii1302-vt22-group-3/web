@@ -16,7 +16,7 @@ function HomePagePresenter(props) {
         setChartData(props.model.chartData);
       });
     },
-    [props.model.temperature, props.model.timestamp]
+    [props.model]
   );
 
   return (

@@ -7,11 +7,12 @@ const ApiCall = {
   apiCall(params) {
     return fetch(TEMPER_URL, {
       method: "GET", // HTTP method
+      crossDomain: true,
       headers: {
         // HTTP headers
         "Content-Type": "application/json",
-        //"Access-Control-Allow-Origin": "*",
-        //"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+        "Access-Control-Allow-Origin": "https://cloudometer-web.herokuapp.com",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
       },
     })
       .then((response) =>
