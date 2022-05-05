@@ -38,6 +38,7 @@ class Model{
 
     setChartData(chartData){
         this.chartData = chartData;
+        this.notifyObservers();
     }
 
     setLatest(result){
@@ -63,6 +64,19 @@ class Model{
             values: this.temperatures,
         }).then(e => {
             this.setTemperatures(e);
+
+            // set chart data from temperatures array { timestamp, value } 
+            let labels = [];
+            let dataset = [];
+            e.forEach(({ timestamp, value }) => {
+                const date = timestamp.split("T")[0].split("-");
+                labels.push(`${date[2]}/${date[1]}`);
+                dataset.push(value);
+            });
+            this.setChartData({
+                labels: labels,
+                dataset: dataset
+            });
         });
     }
 
