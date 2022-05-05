@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+import {Chart as chartJS} from 'chart.js/auto' 
 import { Line } from 'react-chartjs-2'
 
 function TemperatureGraphView(props) {
