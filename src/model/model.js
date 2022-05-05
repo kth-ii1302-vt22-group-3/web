@@ -8,6 +8,7 @@ class Model{
 
         //HomePageView
         this.temperature = 0;
+        this.temperatures = [];
         this.timestamp = "1970-01-01 00:00:00";
       
     }
@@ -45,6 +46,23 @@ class Model{
             value: this.temperature,
             timestamp: this.timeStamp 
         }).then(e => this.setLatest(e))
+    }
+
+    setTemperatures(temperatures){
+        this.temperatures = temperatures;
+        this.notifyObservers();
+    }
+
+    getLatests() {
+        ApiCall.getTemperatures({
+            values: this.temperatures,
+        }).then(e => {
+            this.setTemperatures(e);
+        });
+    }
+
+    getTemperatures(){
+        return this.temperatures;
     }
 
 }
