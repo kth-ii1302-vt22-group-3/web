@@ -34,6 +34,10 @@ class Model{
         this.timestamp = timestamp;
     }
 
+    setChartData(chartData){
+        this.chartData = chartData;
+    }
+
     setLatest(result){
         this.setTemperature(result["value"]);
         this.setTimestamp(result["timestamp"]);
