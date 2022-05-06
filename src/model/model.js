@@ -8,6 +8,7 @@ class Model{
 
         //HomePageView
         this.temperature = 0;
+        this.temperatures = [];
         this.timestamp = "1970-01-01 00:00:00";
         this.chartData = {labels: ["29/4", "30/4", "1/5", "2/5", "3/5", "4/5", "5/5"] ,
             dataset: [15, 12, 22, 13, 10 , 9, 11]} 
@@ -37,6 +38,7 @@ class Model{
 
     setChartData(chartData){
         this.chartData = chartData;
+        this.notifyObservers();
     }
 
     setLatest(result){
@@ -50,6 +52,36 @@ class Model{
             value: this.temperature,
             timestamp: this.timeStamp 
         }).then(e => this.setLatest(e))
+    }
+
+    setTemperatures(temperatures){
+        this.temperatures = temperatures;
+        this.notifyObservers();
+    }
+
+    getLatests() {
+        ApiCall.getTemperatures({
+            values: this.temperatures,
+        }).then(e => {
+            this.setTemperatures(e);
+
+            // set chart data from temperatures array { timestamp, value } 
+            let labels = [];
+            let dataset = [];
+            e.forEach(({ timestamp, value }) => {
+                const date = timestamp.split("T")[0].split("-");
+                labels.push(`${date[2]}/${date[1]}`);
+                dataset.push(value);
+            });
+            this.setChartData({
+                labels: labels,
+                dataset: dataset
+            });
+        });
+    }
+
+    getTemperatures(){
+        return this.temperatures;
     }
 
 }
