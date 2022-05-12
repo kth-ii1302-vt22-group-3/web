@@ -3,7 +3,7 @@ function SidebarView(props) {
         <div className="sidebar">
             <p>
                 <button id="currentTemperature" 
-                        className="sidebarButton hover" 
+                        className="sidebarButton activePageButton" 
                         onClick={e=> {activeCurrentTemperature(); window.location.hash="#currentTemperature"}}>
                     Current Temperature
                 </button></p>
