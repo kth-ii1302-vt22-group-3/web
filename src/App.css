@@ -1,4 +1,6 @@
 /* CSS styles */
+/* special pale green colour: #e6ffe6 */ 
+
 p {
   margin:0;
   padding:0;
@@ -20,7 +22,7 @@ button{
 }
 
 .hover:hover:enabled{
-  background:orange;
+  background:#e6ffe6;
   cursor:pointer;
 }
 
