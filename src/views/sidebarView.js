@@ -32,15 +32,19 @@ function SidebarView(props) {
 function activeCurrentTemperature(){
     var elementActive = document.getElementById("currentTemperature");
     elementActive.classList.add("activePageButton");
+    elementActive.classList.remove("hover");
     var elementNotActive = document.getElementById("temperatureGraph");
     elementNotActive.classList.remove("activePageButton");
+    elementNotActive.classList.add("hover");
 }
 
 function activeTemperatureGraph(){
     var elementActive = document.getElementById("temperatureGraph");
     elementActive.classList.add("activePageButton");
+    elementActive.classList.remove("hover");
     var elementNotActive = document.getElementById("currentTemperature");
     elementNotActive.classList.remove("activePageButton");
+    elementNotActive.classList.add("hover");
 }
 
 export default SidebarView; 
