@@ -17,7 +17,6 @@ button{
   font-size: 20px;
   color: black;
   text-decoration: none;
-  text-shadow: 1px 1px gray;
 }
 
 .hover:hover:enabled{
@@ -26,30 +25,42 @@ button{
 }
 
 .sidebar{
+  /* sidebar style */ 
   flex: 0; /* gets 0% of window growth */ 
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 300px;
   height: 100%;
   padding: 0px; 
   background:lightgray; 
-  border: solid; 
+
+  /* TODO: fix sidebar border to not cover active page's button's right border */
+  border-right: solid; 
   border-color: gray; 
-  border-width: 1px; 
+  border-width: 2px; 
 }
 
 .sidebarButton{
-  width: 250px; 
-  height: 150px; 
+  width: 302px; /* sidebarButton.width+sidebar.border to cover sidebar border */ 
+  height: 200px; 
   border-radius: 0px; 
-  border: solid; 
-  border-width: 1px; 
+  border-bottom: solid; 
+  border-right: solid; 
+  border-width: 2px; 
   border-color: gray; 
-  border-right: none; 
-  background: #e6ffe6;  
+  background: white; 
   margin: 0px; 
+
+  /* text style */
+  font-size: 35px; 
+  color: #4c525c; 
 }
+
+.activePageButton{
+  background: #e6ffe6; 
+  border-right: none; 
+} 
 
 
 .HomePage {
@@ -66,20 +77,20 @@ button{
 
 .Centered {
   position: fixed; 
-  top: calc(50% - 20px);
+  top: calc(40%);
   left: calc(50% - 50px);
 }
 
 .Header {
-  font-size: 22px; 
+  font-size: 28px; 
 }
 
 .Timestamp {
-  font-size: 12px; 
+  font-size: 15px; 
 }
 
 .Temperature {
-  font-size: 150px; 
+  font-size: 220px; 
 }
 
 .App {
