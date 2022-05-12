@@ -1,6 +1,7 @@
 import React from "react";
 import TemperatureView from "../views/temperatureView";
 import TemperatureGraphView from "../views/temperatureGraphView";
+import SidebarView from "../views/sidebarView";
 
 function HomePagePresenter(props) {
   const [temper, setTemper] = React.useState(props.model.temperature);
@@ -21,6 +22,7 @@ function HomePagePresenter(props) {
 
   return (
     <>
+      <SidebarView />
       <TemperatureView temperature={temper} timestamp={dateTime} />
       <TemperatureGraphView chartData={chartData} />
     </>
