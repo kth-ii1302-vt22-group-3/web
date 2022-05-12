@@ -1,7 +1,6 @@
 import React from "react";
 import TemperatureView from "../views/temperatureView";
 import TemperatureGraphView from "../views/temperatureGraphView";
-import DatePickerView from "../views/datePickerView";
 
 function HomePagePresenter(props) {
   const [temper, setTemper] = React.useState(props.model.temperature);
@@ -31,13 +30,11 @@ function HomePagePresenter(props) {
   return (
     <>
       <TemperatureView temperature={temper} timestamp={dateTime} />
-      <DatePickerView
+      <TemperatureGraphView chartData={chartData}
       selected={startDate}
       onChange={onChange}
       startDate={startDate}
-      endDate={endDate}
-      />
-      <TemperatureGraphView chartData={chartData} />
+      endDate={endDate} />
     </>
   );
 }
