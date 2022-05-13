@@ -1,18 +1,27 @@
+import { Link } from "react-router-dom";
+
 function SidebarView(props) {
     return ( 
         <div className="sidebar">
+
+            <Link to="/today">
             <p>
                 <button id="currentTemperature" 
                         className="sidebarButton activePageButton" 
-                        onClick={e=> {activeCurrentTemperature(); window.location.hash="#currentTemperature"}}>
+                        onClick={e=> activeCurrentTemperature()}>
                     Current Temperature
                 </button></p>
+            </Link>
+            <Link to="/graph">
             <p>
                 <button id="temperatureGraph" 
                         className="sidebarButton hover" 
-                        onClick={e=> {activeTemperatureGraph(); window.location.hash="#temperatureGraph"}}>
+                        onClick={e=> activeTemperatureGraph()}>
                     Temperature Graph
                 </button></p>
+            </Link>
+
+            
             <p>
                 <button id="currentHumidity" 
                         className="hidden"
