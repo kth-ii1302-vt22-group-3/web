@@ -65,6 +65,7 @@ function TemperatureGraphView(props) {
         onChange={props.onChange}
         startDate={props.startDate}
         endDate={props.endDate}
+        maxDate={new Date()}
         selectsRange
         />
       <Line

@@ -7,8 +7,8 @@ function HomePagePresenter(props) {
   const [dateTime, setDateTime] = React.useState(props.model.timestamp);
   const [chartData, setChartData] = React.useState(props.model.chartData);
   
-  const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(null);
+  const [startDate, setStartDate] = React.useState(props.model.startDate);
+  const [endDate, setEndDate] = React.useState(props.model.endDate);
 
 
   React.useEffect(
