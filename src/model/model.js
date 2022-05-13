@@ -84,6 +84,14 @@ class Model{
         return this.temperatures;
     }
 
+    getTemperature(){
+        return this.temperature; 
+    }
+
+    getTimestamp(){
+        return this.timestamp; 
+    }
+
 }
 
 export default Model
