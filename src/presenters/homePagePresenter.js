@@ -25,7 +25,7 @@ function HomePagePresenter(props) {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [props.model, temper]);
+  }, [props.model, temper, chartData]);
 
   return (
     <>

@@ -5,8 +5,8 @@ import ShowPresenter from './presenters/showPresenter';
 
 function App() {
   const model = new Model();
-  model.getLatest();
-  model.getLatests();
+  //model.getLatest();
+  //model.getLatests();
   
   return (
     <div className="App">
