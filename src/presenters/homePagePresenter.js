@@ -9,11 +9,7 @@ function HomePagePresenter(props) {
   
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(null);
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
+
 
   React.useEffect(
     function () {
@@ -32,7 +28,12 @@ function HomePagePresenter(props) {
       <TemperatureView temperature={temper} timestamp={dateTime} />
       <TemperatureGraphView chartData={chartData}
       selected={startDate}
-      onChange={onChange}
+      onChange={(dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+        props.model.setChosenDate(start, end);
+      }}
       startDate={startDate}
       endDate={endDate} />
     </>
