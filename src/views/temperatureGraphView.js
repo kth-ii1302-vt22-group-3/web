@@ -1,6 +1,8 @@
 // eslint-disable-next-line
 import { Chart as chartJS } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function chartOptions() {
   return {
@@ -55,11 +57,21 @@ function chartData({ labels, dataset }) {
 
 function TemperatureGraphView(props) {
   return (
-    <div style={{ width: 600 }}>
+    <div style={{ width: 1000 }}>
+      <div>Select Interval:</div>
+      <DatePicker
+        selected={props.startDate}
+        onChange={props.onChange}
+        startDate={props.startDate}
+        endDate={props.endDate}
+        maxDate={new Date()}
+        selectsRange
+      />
       <Line
+        id="graph"
         data={chartData(props.chartData)}
-        height={400}
-        width={600}
+        height={500}
+        width={1000}
         options={chartOptions()}
       />
     </div>
