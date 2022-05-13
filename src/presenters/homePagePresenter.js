@@ -8,6 +8,10 @@ function HomePagePresenter(props) {
   const [dateTime, setDateTime] = React.useState(props.model.timestamp);
   const [chartData, setChartData] = React.useState(props.model.chartData);
   
+  const [startDate, setStartDate] = React.useState(props.model.startDate);
+  const [endDate, setEndDate] = React.useState(props.model.endDate);
+
+
   React.useEffect(
     function () {
       // add observer to model
@@ -24,7 +28,16 @@ function HomePagePresenter(props) {
     <>
       <SidebarView />
       <TemperatureView temperature={temper} timestamp={dateTime} />
-      <TemperatureGraphView chartData={chartData} />
+      <TemperatureGraphView chartData={chartData}
+      selected={startDate}
+      onChange={(dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+        props.model.setChosenDate(start, end);
+      }}
+      startDate={startDate}
+      endDate={endDate} />
     </>
   );
 }
