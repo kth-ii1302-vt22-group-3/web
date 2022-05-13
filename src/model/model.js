@@ -116,6 +116,8 @@ class Model {
   }
 
   getLatests() {
+    this.labels = []
+    this.dataset = []
     ApiCall.getTemperatures({
       values: this.temperatures,
     }).then((e) => {

@@ -17,17 +17,22 @@ function ShowPresenter(props) {
   const [startDate, setStartDate] = React.useState(props.model.startDate);
   const [endDate, setEndDate] = React.useState(props.model.endDate);
 
-  React.useEffect(
-    function () {
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      props.model.getLatest();
+      props.model.getLatests();
       // add observer to model
       props.model.addObserver(function () {
         setTemper(props.model.temperature);
         setDateTime(props.model.timestamp);
         setChartData(props.model.chartData);
       });
-    },
-    [props.model]
-  );
+      console.log(props.model);
+      setTemper(props.model.temperature);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [props.model, temper]);
 
   return (
     <>
