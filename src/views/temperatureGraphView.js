@@ -55,11 +55,11 @@ function chartData({ labels, dataset }) {
 
 function TemperatureGraphView(props) {
   return (
-    <div style={{ width: 600 }}>
-      <Line
+    <div style={{ width: 1000 }}>
+      <Line id="graph" 
         data={chartData(props.chartData)}
-        height={400}
-        width={600}
+        height={500}
+        width={1000}
         options={chartOptions()}
       />
     </div>

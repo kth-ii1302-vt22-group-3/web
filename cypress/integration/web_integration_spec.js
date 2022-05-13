@@ -6,12 +6,12 @@ describe("Test case: Running the webpage in a test environment with default valu
 
     it("Test scenario 2: The webpage path '/today',  should display the temperature as 0.", () => {
         cy.visit("/today");
-        cy.get("#current_temperature").contains("0");
+        cy.get("#temperature").contains("0");
     });
 
     it("Test scenario 3: The webpage path '/today', should display the timestamp as 1970-01-01 00:00:00.", () => {
         cy.visit("/today");
-        cy.get("#current_timestamp").contains("1970-01-01 00:00:00");
+        cy.get("#timestamp").contains("1970-01-01 00:00:00");
     });
 
     it("Test scenario 4: The webpage, path '/graph', should display a graph from 0 to 10 in a span of 10 days.", () => {
