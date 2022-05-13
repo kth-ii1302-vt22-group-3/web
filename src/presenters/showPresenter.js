@@ -16,19 +16,19 @@ function ShowPresenter(props) {
             setTemper(props.model.temperature);
             setDateTime(props.model.timestamp);
             setChartData(props.model.chartData);
-        });
-    },
-    [props.model]
-);
+            });
+        },
+        [props.model]
+    );
 
-return (
+    return (
         <>
             <BrowserRouter>
             <SidebarView />
                 <Routes>
                     <Route path="/" element={<Outlet/>}>
-                        <Route index path="today" element={<TemperatureView temperature={111} timestamp={"TEST DATE TIME"} />}/>
-                        <Route path="graph" element={<TemperatureGraphView chartData={props.model.chartData} />}/>
+                        <Route index path="today" element={<TemperatureView temperature={temper} timestamp={dateTime} />}/>
+                        <Route path="graph" element={<TemperatureGraphView chartData={chartData} />}/>
                     </Route>
                 </Routes>
             </BrowserRouter></>
