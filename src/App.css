@@ -1,8 +1,56 @@
 /* CSS styles */
+/* special pale green colour: #e6ffe6 */ 
+
 p {
   margin:0;
   padding:0;
 }
+
+.hover:hover:enabled{
+  background:#ffcc66;
+  cursor:pointer;
+}
+
+.sidebar{
+  /* sidebar style */ 
+  flex: 0; /* gets 0% of window growth */ 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 0px; 
+  background:lightgray; 
+
+  /* TODO: fix sidebar border to not cover active page's button's right border */
+  border-right: solid; 
+  border-color: gray; 
+  border-width: 2px; 
+}
+
+.sidebarButton{
+  width: 302px; /* sidebarButton.width+sidebar.border to cover sidebar border */ 
+  height: 200px; 
+  border-radius: 0px; 
+  border-bottom: solid; 
+  border-right: solid; 
+  border-width: 2px; 
+  border-color: gray; 
+  background: white; 
+  margin: 0px; 
+
+  /* text style */
+  font-size: 35px; 
+  color: #4c525c; 
+  text-decoration: none;
+}
+
+.activePageButton{
+  background: #e6ffe6; 
+  border-right: none; 
+  font-weight: bold; 
+} 
+
 
 .HomePage {
   text-align: center; 
@@ -18,20 +66,20 @@ p {
 
 .Centered {
   position: fixed; 
-  top: calc(50% - 20px);
+  top: calc(40%);
   left: calc(50% - 50px);
 }
 
 .Header {
-  font-size: 22px; 
+  font-size: 28px; 
 }
 
 .Timestamp {
-  font-size: 12px; 
+  font-size: 15px; 
 }
 
 .Temperature {
-  font-size: 150px; 
+  font-size: 220px; 
 }
 
 .App {
@@ -71,4 +119,8 @@ p {
   to {
     transform: rotate(360deg);
   }
+}
+
+.hidden{
+  display: none;
 }

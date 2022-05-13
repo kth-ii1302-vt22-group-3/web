@@ -61,7 +61,7 @@ class Model {
     this.setTemperature(result["value"]);
     const date = result["timestamp"].split("T")[0];
     let time = result["timestamp"].split("T")[1];
-        time = time.slice(0, time.length-5)
+    time = time.slice(0, time.length - 5);
     this.setTimestamp(`${date} ${time}`);
     this.notifyObservers();
   }
@@ -105,9 +105,11 @@ class Model {
         new Date(timestamp).getDate() >= this.startDate.getDate()
       ) {
         const date = timestamp.split("T")[0].split("-");
-        
+
         const time = timestamp.split("T")[1];
-        this.labels.push(`${date[2]}/${date[1]} ${time.slice(0, time.length-5)}`);
+        this.labels.push(
+          `${date[2]}/${date[1]} ${time.slice(0, time.length - 5)}`
+        );
         this.dataset.push(value);
       }
     });
@@ -128,6 +130,18 @@ class Model {
 
   getTemperatures() {
     return this.temperatures;
+  }
+
+  getTemperatures() {
+    return this.temperatures;
+  }
+
+  getTemperature() {
+    return this.temperature;
+  }
+
+  getTimestamp() {
+    return this.timestamp;
   }
 }
 
