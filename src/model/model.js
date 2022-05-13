@@ -132,10 +132,6 @@ class Model {
     return this.temperatures;
   }
 
-  getTemperatures() {
-    return this.temperatures;
-  }
-
   getTemperature() {
     return this.temperature;
   }
