@@ -1,49 +1,45 @@
 import ApiCall from "../api/apiCall";
 
 class Model {
+  //__________Constructor_______________
   constructor() {
-    //observers
-    this.observers = [];
-
-    //HomePageView
-    this.temperature = "";
-    this.temperatures = [];
+    //Current Temperature
+    this.temperature = 0;
     this.timestamp = "1970-01-01 00:00:00";
+
+    //Collection Temperatures
+    this.temperatures = [];
+
+    // Chart Data
     this.labels = [];
     this.dataset = [];
     this.chartData = {
       labels: this.labels,
       dataset: this.dataset,
     };
-    this.endDate = new Date();
-    this.endDate.setHours(23);
-    this.endDate.setMinutes(59);
-    this.endDate.setSeconds(59);
-    this.startDate = new Date(
-      this.endDate.getFullYear(),
-      this.endDate.getMonth(),
-      this.endDate.getDate() - 7
-    );
+    this.endDate = this.setEndDate();
+    this.startDate = this.setStartDate(this.endDate);
   }
 
-  //____________observers_________________
-  addObserver(callback) {
-    this.observers = [...this.observers, callback];
+  //____________Getters_________________
+
+  getTemperature() {
+    return this.temperature;
   }
 
-  removeObserver(callback) {
-    this.observers = this.observers.filter((x) => x !== callback);
+  getTimestamp() {
+    return this.timestamp;
   }
 
-  notifyObservers() {
-    this.observers.forEach((cb) => {
-      try {
-        cb();
-      } catch (error) {}
-    });
+  getTemperatures() {
+    return this.temperatures;
   }
 
-  //____________HomePage_________________
+  getChartData() {
+    return this.chartData;
+  }
+
+  //____________Setters_________________
   setTemperature(temperature) {
     this.temperature = temperature;
   }
@@ -52,49 +48,37 @@ class Model {
     this.timestamp = timestamp;
   }
 
-  setChartData(chartData) {
-    this.chartData = chartData;
-    this.notifyObservers();
-  }
-
-  setLatest(result) {
+  setCurrentTemperature(result) {
     this.setTemperature(result["value"]);
     const date = result["timestamp"].split("T")[0];
     let time = result["timestamp"].split("T")[1];
     time = time.slice(0, time.length - 5);
     this.setTimestamp(`${date} ${time}`);
-    this.notifyObservers();
-  }
-
-  getLatest() {
-    ApiCall.getTemperature({
-      value: this.temperature,
-      timestamp: this.timeStamp,
-    }).then((e) => this.setLatest(e));
   }
 
   setTemperatures(temperatures) {
     this.temperatures = temperatures;
-    this.notifyObservers();
   }
 
-  setChosenDate(start, end) {
-    this.startDate = start;
-    console.log(start);
-    this.endDate = end;
-    console.log(end);
+  setChartData(chartData) {
+    this.chartData = chartData;
+  }
 
-    this.labels = [];
-    this.dataset = [];
-    if (this.endDate != null) {
-      this.setChosenGraphRange();
-    }
-    this.setChartData({
-      labels: this.labels,
-      dataset: this.dataset,
-    });
-    console.log(this.chartData);
-    this.notifyObservers();
+  setEndDate() {
+    const endDate = new Date();
+    endDate.setHours(23);
+    endDate.setMinutes(59);
+    endDate.setSeconds(59);
+    return endDate;
+  }
+
+  setStartDate(endDate) {
+    const startDate = new Date(
+      endDate.getFullYear(),
+      endDate.getMonth(),
+      endDate.getDate() - 7
+    );
+    return startDate;
   }
 
   setChosenGraphRange() {
@@ -115,9 +99,18 @@ class Model {
     });
   }
 
-  getLatests() {
-    this.labels = []
-    this.dataset = []
+  //______________API___________________
+
+  retrieveCurrentTemperature() {
+    ApiCall.getTemperature({
+      value: this.temperature,
+      timestamp: this.timeStamp,
+    }).then((e) => this.setCurrentTemperature(e));
+  }
+
+  retrieveCollectionOfTemperatures() {
+    this.labels = [];
+    this.dataset = [];
     ApiCall.getTemperatures({
       values: this.temperatures,
     }).then((e) => {
@@ -130,16 +123,22 @@ class Model {
     });
   }
 
-  getTemperatures() {
-    return this.temperatures;
-  }
+  setChosenDate(start, end) {
+    this.startDate = start;
+    console.log(start);
+    this.endDate = end;
+    console.log(end);
 
-  getTemperature() {
-    return this.temperature;
-  }
-
-  getTimestamp() {
-    return this.timestamp;
+    this.labels = [];
+    this.dataset = [];
+    if (this.endDate != null) {
+      this.setChosenGraphRange();
+    }
+    this.setChartData({
+      labels: this.labels,
+      dataset: this.dataset,
+    });
+    console.log(this.chartData);
   }
 }
 

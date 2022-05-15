@@ -5,8 +5,8 @@ import ShowPresenter from './presenters/showPresenter';
 
 function App() {
   const model = new Model();
-  //model.getLatest();
-  //model.getLatests();
+  //model.retrieveCurrentTemperature();
+  //model.retrieveCollectionOfTemperatures();
   
   return (
     <div className="App">

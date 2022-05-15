@@ -19,19 +19,14 @@ function ShowPresenter(props) {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      props.model.getLatest();
-      props.model.getLatests();
-      // add observer to model
-      props.model.addObserver(function () {
-        setTemper(props.model.temperature);
-        setDateTime(props.model.timestamp);
-        setChartData(props.model.chartData);
-      });
-      console.log(props.model);
+      props.model.retrieveCurrentTemperature();
+      props.model.retrieveCollectionOfTemperatures();
       setTemper(props.model.temperature);
+      setDateTime(props.model.timestamp);
+      setChartData(props.model.chartData);
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () =>  clearInterval(interval);
   }, [props.model, temper]);
 
   return (
