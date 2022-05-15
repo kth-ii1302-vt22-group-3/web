@@ -57,6 +57,10 @@ class Model {
     this.notifyObservers();
   }
 
+  getChartData() {
+    return this.chartData;
+  }
+
   setLatest(result) {
     this.setTemperature(result["value"]);
     const date = result["timestamp"].split("T")[0];

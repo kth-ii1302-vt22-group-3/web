@@ -56,6 +56,7 @@ function chartData({ labels, dataset }) {
 }
 
 function TemperatureGraphView(props) {
+  const isIncorrectDatasetFormat = props.chartData.dataset.filter(number => number !== "number")
   return (
     <div style={{ width: 1000 }}>
       <div>Select Interval:</div>
@@ -67,13 +68,13 @@ function TemperatureGraphView(props) {
         maxDate={new Date()}
         selectsRange
       />
-      <Line
+      {!isIncorrectDatasetFormat && <Line
         id="graph"
         data={chartData(props.chartData)}
         height={500}
         width={1000}
         options={chartOptions()}
-      />
+      />}
     </div>
   );
 }
