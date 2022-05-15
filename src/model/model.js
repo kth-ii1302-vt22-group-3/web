@@ -4,7 +4,7 @@ class Model {
   //__________Constructor_______________
   constructor() {
     //Current Temperature
-    this.temperature = "";
+    this.temperature = 0;
     this.timestamp = "1970-01-01 00:00:00";
 
     //Collection Temperatures
@@ -17,13 +17,13 @@ class Model {
       labels: this.labels,
       dataset: this.dataset,
     };
-    this.endDate = this.#setEndDate();
-    this.startDate = this.#setStartDate();
+    this.endDate = this.setEndDate();
+    this.startDate = this.setStartDate(this.endDate);
 
     //observers
     this.observers = [];
   }
-  
+
   //____________Getters_________________
 
   getTemperature() {
@@ -51,7 +51,7 @@ class Model {
     this.timestamp = timestamp;
   }
 
-  #setCurrentTemperature(result) {
+  setCurrentTemperature(result) {
     this.setTemperature(result["value"]);
     const date = result["timestamp"].split("T")[0];
     let time = result["timestamp"].split("T")[1];
@@ -70,7 +70,7 @@ class Model {
     this.notifyObservers();
   }
 
-  #setEndDate() {
+  setEndDate() {
     const endDate = new Date();
     endDate.setHours(23);
     endDate.setMinutes(59);
@@ -78,7 +78,7 @@ class Model {
     return endDate;
   }
 
-  #setStartDate(endDate) {
+  setStartDate(endDate) {
     const startDate = new Date(
       endDate.getFullYear(),
       endDate.getMonth(),
@@ -87,7 +87,7 @@ class Model {
     return startDate;
   }
 
-  #setChosenGraphRange() {
+  setChosenGraphRange() {
     let preRange = this.getTemperatures();
     preRange.forEach(({ timestamp, value }) => {
       if (
@@ -111,7 +111,7 @@ class Model {
     ApiCall.getTemperature({
       value: this.temperature,
       timestamp: this.timeStamp,
-    }).then((e) => this.#setCurrentTemperature(e));
+    }).then((e) => this.setCurrentTemperature(e));
   }
 
   retrieveCollectionOfTemperatures() {
@@ -121,7 +121,7 @@ class Model {
       values: this.temperatures,
     }).then((e) => {
       this.setTemperatures(e);
-      this.#setChosenGraphRange();
+      this.setChosenGraphRange();
       this.setChartData({
         labels: this.labels,
         dataset: this.dataset,
