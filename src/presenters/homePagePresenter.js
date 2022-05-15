@@ -14,14 +14,9 @@ function HomePagePresenter(props) {
     const interval = setInterval(() => {
       props.model.retrieveCurrentTemperature();
       props.model.retrieveCollectionOfTemperatures();
-      // add observer to model
-      props.model.addObserver(function () {
-        setTemper(props.model.temperature);
-        setDateTime(props.model.timestamp);
-        setChartData(props.model.chartData);
-      });
-      console.log(props.model);
       setTemper(props.model.temperature);
+      setDateTime(props.model.timestamp);
+      setChartData(props.model.chartData);
     }, 5000);
 
     return () => clearInterval(interval);

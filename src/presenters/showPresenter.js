@@ -21,14 +21,9 @@ function ShowPresenter(props) {
     const interval = setInterval(() => {
       props.model.retrieveCurrentTemperature();
       props.model.retrieveCollectionOfTemperatures();
-      // add observer to model
-      //function obs () {
-        setTemper(props.model.temperature);
-        setDateTime(props.model.timestamp);
-        setChartData(props.model.chartData);
-      //}
-      //props.model.addObserver(obs);
-      //props.model.removeObserver(obs)
+      setTemper(props.model.temperature);
+      setDateTime(props.model.timestamp);
+      setChartData(props.model.chartData);
     }, 5000);
 
     return () =>  clearInterval(interval);

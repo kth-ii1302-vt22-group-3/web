@@ -19,9 +19,6 @@ class Model {
     };
     this.endDate = this.setEndDate();
     this.startDate = this.setStartDate(this.endDate);
-
-    //observers
-    this.observers = [];
   }
 
   //____________Getters_________________
@@ -57,17 +54,14 @@ class Model {
     let time = result["timestamp"].split("T")[1];
     time = time.slice(0, time.length - 5);
     this.setTimestamp(`${date} ${time}`);
-    this.notifyObservers();
   }
 
   setTemperatures(temperatures) {
     this.temperatures = temperatures;
-    this.notifyObservers();
   }
 
   setChartData(chartData) {
     this.chartData = chartData;
-    this.notifyObservers();
   }
 
   setEndDate() {
@@ -145,25 +139,6 @@ class Model {
       dataset: this.dataset,
     });
     console.log(this.chartData);
-    this.notifyObservers();
-  }
-
-  //___________observers________________
-
-  addObserver(callback) {
-    this.observers = [...this.observers, callback];
-  }
-
-  removeObserver(callback) {
-    this.observers = this.observers.filter((x) => x !== callback);
-  }
-
-  notifyObservers() {
-    this.observers.forEach((cb) => {
-      try {
-        cb();
-      } catch (error) {}
-    });
   }
 }
 
