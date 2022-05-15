@@ -22,16 +22,16 @@ function ShowPresenter(props) {
       props.model.retrieveCurrentTemperature();
       props.model.retrieveCollectionOfTemperatures();
       // add observer to model
-      props.model.addObserver(function () {
+      //function obs () {
         setTemper(props.model.temperature);
         setDateTime(props.model.timestamp);
         setChartData(props.model.chartData);
-      });
-      console.log(props.model);
-      setTemper(props.model.temperature);
+      //}
+      //props.model.addObserver(obs);
+      //props.model.removeObserver(obs)
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () =>  clearInterval(interval);
   }, [props.model, temper]);
 
   return (
