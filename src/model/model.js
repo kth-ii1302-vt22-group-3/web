@@ -18,12 +18,12 @@ class Model {
       dataset: this.dataset,
     };
     this.endDate = this.#setEndDate();
-    this.startDate = this.#setStartDate();
+    this.startDate = this.#setStartDate(this.endDate);
 
     //observers
     this.observers = [];
   }
-  
+
   //____________Getters_________________
 
   getTemperature() {
