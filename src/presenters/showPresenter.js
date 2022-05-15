@@ -19,8 +19,8 @@ function ShowPresenter(props) {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      props.model.getLatest();
-      props.model.getLatests();
+      props.model.retrieveCurrentTemperature();
+      props.model.retrieveCollectionOfTemperatures();
       // add observer to model
       props.model.addObserver(function () {
         setTemper(props.model.temperature);

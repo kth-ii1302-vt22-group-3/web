@@ -1,49 +1,48 @@
 import ApiCall from "../api/apiCall";
 
 class Model {
+  //__________Constructor_______________
   constructor() {
-    //observers
-    this.observers = [];
-
-    //HomePageView
+    //Current Temperature
     this.temperature = "";
-    this.temperatures = [];
     this.timestamp = "1970-01-01 00:00:00";
+
+    //Collection Temperatures
+    this.temperatures = [];
+
+    // Chart Data
     this.labels = [];
     this.dataset = [];
     this.chartData = {
       labels: this.labels,
       dataset: this.dataset,
     };
-    this.endDate = new Date();
-    this.endDate.setHours(23);
-    this.endDate.setMinutes(59);
-    this.endDate.setSeconds(59);
-    this.startDate = new Date(
-      this.endDate.getFullYear(),
-      this.endDate.getMonth(),
-      this.endDate.getDate() - 7
-    );
+    this.endDate = this.#setEndDate();
+    this.startDate = this.#setStartDate();
+
+    //observers
+    this.observers = [];
+  }
+  
+  //____________Getters_________________
+
+  getTemperature() {
+    return this.temperature;
   }
 
-  //____________observers_________________
-  addObserver(callback) {
-    this.observers = [...this.observers, callback];
+  getTimestamp() {
+    return this.timestamp;
   }
 
-  removeObserver(callback) {
-    this.observers = this.observers.filter((x) => x !== callback);
+  getTemperatures() {
+    return this.temperatures;
   }
 
-  notifyObservers() {
-    this.observers.forEach((cb) => {
-      try {
-        cb();
-      } catch (error) {}
-    });
+  getChartData() {
+    return this.chartData;
   }
 
-  //____________HomePage_________________
+  //____________Setters_________________
   setTemperature(temperature) {
     this.temperature = temperature;
   }
@@ -52,16 +51,7 @@ class Model {
     this.timestamp = timestamp;
   }
 
-  setChartData(chartData) {
-    this.chartData = chartData;
-    this.notifyObservers();
-  }
-
-  getChartData() {
-    return this.chartData;
-  }
-
-  setLatest(result) {
+  #setCurrentTemperature(result) {
     this.setTemperature(result["value"]);
     const date = result["timestamp"].split("T")[0];
     let time = result["timestamp"].split("T")[1];
@@ -70,16 +60,73 @@ class Model {
     this.notifyObservers();
   }
 
-  getLatest() {
-    ApiCall.getTemperature({
-      value: this.temperature,
-      timestamp: this.timeStamp,
-    }).then((e) => this.setLatest(e));
-  }
-
   setTemperatures(temperatures) {
     this.temperatures = temperatures;
     this.notifyObservers();
+  }
+
+  setChartData(chartData) {
+    this.chartData = chartData;
+    this.notifyObservers();
+  }
+
+  #setEndDate() {
+    const endDate = new Date();
+    endDate.setHours(23);
+    endDate.setMinutes(59);
+    endDate.setSeconds(59);
+    return endDate;
+  }
+
+  #setStartDate(endDate) {
+    const startDate = new Date(
+      endDate.getFullYear(),
+      endDate.getMonth(),
+      endDate.getDate() - 7
+    );
+    return startDate;
+  }
+
+  #setChosenGraphRange() {
+    let preRange = this.getTemperatures();
+    preRange.forEach(({ timestamp, value }) => {
+      if (
+        new Date(timestamp).getDate() <= this.endDate.getDate() &&
+        new Date(timestamp).getDate() >= this.startDate.getDate()
+      ) {
+        const date = timestamp.split("T")[0].split("-");
+
+        const time = timestamp.split("T")[1];
+        this.labels.push(
+          `${date[2]}/${date[1]} ${time.slice(0, time.length - 5)}`
+        );
+        this.dataset.push(value);
+      }
+    });
+  }
+
+  //______________API___________________
+
+  retrieveCurrentTemperature() {
+    ApiCall.getTemperature({
+      value: this.temperature,
+      timestamp: this.timeStamp,
+    }).then((e) => this.#setCurrentTemperature(e));
+  }
+
+  retrieveCollectionOfTemperatures() {
+    this.labels = [];
+    this.dataset = [];
+    ApiCall.getTemperatures({
+      values: this.temperatures,
+    }).then((e) => {
+      this.setTemperatures(e);
+      this.#setChosenGraphRange();
+      this.setChartData({
+        labels: this.labels,
+        dataset: this.dataset,
+      });
+    });
   }
 
   setChosenDate(start, end) {
@@ -101,49 +148,22 @@ class Model {
     this.notifyObservers();
   }
 
-  setChosenGraphRange() {
-    let preRange = this.getTemperatures();
-    preRange.forEach(({ timestamp, value }) => {
-      if (
-        new Date(timestamp).getDate() <= this.endDate.getDate() &&
-        new Date(timestamp).getDate() >= this.startDate.getDate()
-      ) {
-        const date = timestamp.split("T")[0].split("-");
+  //___________observers________________
 
-        const time = timestamp.split("T")[1];
-        this.labels.push(
-          `${date[2]}/${date[1]} ${time.slice(0, time.length - 5)}`
-        );
-        this.dataset.push(value);
-      }
+  addObserver(callback) {
+    this.observers = [...this.observers, callback];
+  }
+
+  removeObserver(callback) {
+    this.observers = this.observers.filter((x) => x !== callback);
+  }
+
+  notifyObservers() {
+    this.observers.forEach((cb) => {
+      try {
+        cb();
+      } catch (error) {}
     });
-  }
-
-  getLatests() {
-    this.labels = []
-    this.dataset = []
-    ApiCall.getTemperatures({
-      values: this.temperatures,
-    }).then((e) => {
-      this.setTemperatures(e);
-      this.setChosenGraphRange();
-      this.setChartData({
-        labels: this.labels,
-        dataset: this.dataset,
-      });
-    });
-  }
-
-  getTemperatures() {
-    return this.temperatures;
-  }
-
-  getTemperature() {
-    return this.temperature;
-  }
-
-  getTimestamp() {
-    return this.timestamp;
   }
 }
 
