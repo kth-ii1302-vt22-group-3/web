@@ -30,15 +30,4 @@ describe("Test case: Test the graph-component with different data", () => {
     const data = model.getChartData();
     mount(<TemperatureGraphView chartData={data} />);
   });
-
-  it("Test scenario 4: graph-component with dataset of strings, labels of integers, should not exists.", () => {
-    const model = new Model();
-    model.setChartData({
-      dataset: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    });
-    const data = model.getChartData();
-    mount(<TemperatureGraphView chartData={data} />);
-    cy.get("#graph").should("not.exist");
-  });
 });
