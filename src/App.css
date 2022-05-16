@@ -21,8 +21,6 @@ p {
   height: 100%;
   padding: 0px; 
   background:lightgray; 
-
-  /* TODO: fix sidebar border to not cover active page's button's right border */
   border-right: solid; 
   border-color: gray; 
   border-width: 2px; 
@@ -32,6 +30,7 @@ p {
   width: 302px; /* sidebarButton.width+sidebar.border to cover sidebar border */ 
   height: 200px; 
   border-radius: 0px; 
+  border-top: none;
   border-bottom: solid; 
   border-right: solid; 
   border-width: 2px; 
@@ -51,7 +50,6 @@ p {
   font-weight: bold; 
 } 
 
-
 .HomePage {
   text-align: center; 
   align-items: center;
@@ -62,16 +60,28 @@ p {
   font-weight: bold; 
   padding: 10px; 
   border: 10px; 
+  margin-left: 300px; 
 }
 
-.Centered {
+.TemperaturePosition {
   position: fixed; 
   top: calc(40%);
-  left: calc(50% - 50px);
+  left: calc(45%);
 }
 
-.Header {
-  font-size: 28px; 
+.GraphPosition {
+  position: fixed; 
+  top: calc(25%);
+  left: calc(33%);
+}
+
+.TemperatureHeader {
+  font-size: 30px; 
+}
+
+.GraphHeader {
+  font-size: 27px; 
+  margin-bottom: 7px; 
 }
 
 .Timestamp {
