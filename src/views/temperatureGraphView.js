@@ -1,6 +1,6 @@
 // eslint-disable-next-line
-import { getDefaultNormalizer } from "@testing-library/react";
-import { Chart as chartJS } from "chart.js/auto";
+//import { getDefaultNormalizer } from "@testing-library/react";
+//import { Chart as chartJS } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
