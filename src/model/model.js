@@ -39,6 +39,14 @@ class Model {
     return this.chartData;
   }
 
+  getEndDate(){
+    return this.endDate;
+  }
+
+  getStartDate(){
+    return this.startDate;
+  }
+
   //____________Setters_________________
   setTemperature(temperature) {
     this.temperature = temperature;
@@ -69,6 +77,7 @@ class Model {
     endDate.setHours(23);
     endDate.setMinutes(59);
     endDate.setSeconds(59);
+    endDate.setMilliseconds(0);
     return endDate;
   }
 
